@@ -1,0 +1,1125 @@
+name: Github Actions CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - develop
+      - githubactions*
+      - feature/**
+      - fix/**
+      - pr/**
+
+
+
+jobs:
+  posix:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: "TOOLSET=gcc COMPILER=g++-6 CXXSTD=gnu++11 TES Job 0"
+            buildtype: "boost"
+            packages: "g++-6 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-6"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-6"
+            cxxstd: "gnu++11"
+            test_suite: "arithmetic_tests"
+          - name: "TOOLSET=gcc COMPILER=g++-6 CXXSTD=gnu++14 TES Job 1"
+            buildtype: "boost"
+            packages: "g++-6 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-6"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-6"
+            cxxstd: "gnu++14"
+            test_suite: "arithmetic_tests"
+          - name: "TOOLSET=gcc COMPILER=g++-6 CXXSTD=gnu++11 TES Job 2"
+            buildtype: "boost"
+            packages: "g++-6 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-6"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-6"
+            cxxstd: "gnu++11"
+            test_suite: "cpp_int_tests"
+          - name: "TOOLSET=gcc COMPILER=g++-6 CXXSTD=gnu++14 TES Job 3"
+            buildtype: "boost"
+            packages: "g++-6 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-6"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-6"
+            cxxstd: "gnu++14"
+            test_suite: "cpp_int_tests"
+          - name: "TOOLSET=gcc COMPILER=g++-6 CXXSTD=gnu++11 TES Job 4"
+            buildtype: "boost"
+            packages: "g++-6 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-6"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-6"
+            cxxstd: "gnu++11"
+            test_suite: "functions_and_limits"
+          - name: "TOOLSET=gcc COMPILER=g++-6 CXXSTD=gnu++14 TES Job 5"
+            buildtype: "boost"
+            packages: "g++-6 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-6"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-6"
+            cxxstd: "gnu++14"
+            test_suite: "functions_and_limits"
+          - name: "TOOLSET=gcc COMPILER=g++-6 CXXSTD=gnu++11 TES Job 6"
+            buildtype: "boost"
+            packages: "g++-6 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-6"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            test_suite: "conversions performance"
+            toolset: "gcc"
+            compiler: "g++-6"
+            cxxstd: "gnu++11"
+          - name: "TOOLSET=gcc COMPILER=g++-6 CXXSTD=gnu++14 TES Job 7"
+            buildtype: "boost"
+            packages: "g++-6 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-6"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            test_suite: "conversions performance"
+            toolset: "gcc"
+            compiler: "g++-6"
+            cxxstd: "gnu++14"
+          - name: "TOOLSET=gcc COMPILER=g++-6 CXXSTD=gnu++11 TES Job 8"
+            buildtype: "boost"
+            packages: "g++-6 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-6"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-6"
+            cxxstd: "gnu++11"
+            test_suite: "misc"
+          - name: "TOOLSET=gcc COMPILER=g++-6 CXXSTD=gnu++14 TES Job 9"
+            buildtype: "boost"
+            packages: "g++-6 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-6"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-6"
+            cxxstd: "gnu++14"
+            test_suite: "misc"
+          - name: "TOOLSET=gcc COMPILER=g++-6 CXXSTD=gnu++11 TES Job 10"
+            buildtype: "boost"
+            packages: "g++-6 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-6"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            test_suite: "compile_fail examples"
+            toolset: "gcc"
+            compiler: "g++-6"
+            cxxstd: "gnu++11"
+          - name: "TOOLSET=gcc COMPILER=g++-6 CXXSTD=gnu++14 TES Job 11"
+            buildtype: "boost"
+            packages: "g++-6 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-6"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            test_suite: "compile_fail examples"
+            toolset: "gcc"
+            compiler: "g++-6"
+            cxxstd: "gnu++14"
+          - name: "TOOLSET=gcc COMPILER=g++-6 CXXSTD=gnu++11 TES Job 12"
+            buildtype: "boost"
+            packages: "g++-6 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-6"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-6"
+            cxxstd: "gnu++11"
+            test_suite: "concepts"
+          - name: "TOOLSET=gcc COMPILER=g++-6 CXXSTD=gnu++14 TES Job 13"
+            buildtype: "boost"
+            packages: "g++-6 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-6"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-6"
+            cxxstd: "gnu++14"
+            test_suite: "concepts"
+          - name: "TOOLSET=gcc COMPILER=g++-5 CXXSTD=c++14 TEST_ Job 14"
+            buildtype: "boost"
+            packages: "g++-5 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-5"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-5"
+            cxxstd: "c++14"
+            test_suite: "arithmetic_tests"
+          - name: "TOOLSET=gcc COMPILER=g++-5 CXXSTD=c++14 TEST_ Job 15"
+            buildtype: "boost"
+            packages: "g++-5 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-5"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-5"
+            cxxstd: "c++14"
+            test_suite: "cpp_int_tests"
+          - name: "TOOLSET=gcc COMPILER=g++-5 CXXSTD=c++14 TEST_ Job 16"
+            buildtype: "boost"
+            packages: "g++-5 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-5"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-5"
+            cxxstd: "c++14"
+            test_suite: "functions_and_limits"
+          - name: "TOOLSET=gcc COMPILER=g++-5 CXXSTD=c++14 TEST_ Job 17"
+            buildtype: "boost"
+            packages: "g++-5 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-5"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            test_suite: "conversions performance"
+            toolset: "gcc"
+            compiler: "g++-5"
+            cxxstd: "c++14"
+          - name: "TOOLSET=gcc COMPILER=g++-5 CXXSTD=c++14 TEST_ Job 18"
+            buildtype: "boost"
+            packages: "g++-5 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-5"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-5"
+            cxxstd: "c++14"
+            test_suite: "misc"
+          - name: "TOOLSET=gcc COMPILER=g++-5 CXXSTD=c++14 TEST_ Job 19"
+            buildtype: "boost"
+            packages: "g++-5 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-5"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            test_suite: "compile_fail examples"
+            toolset: "gcc"
+            compiler: "g++-5"
+            cxxstd: "c++14"
+          - name: "TOOLSET=gcc COMPILER=g++-5 CXXSTD=c++14 TEST_ Job 20"
+            buildtype: "boost"
+            packages: "g++-5 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-5"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-5"
+            cxxstd: "c++14"
+            test_suite: "concepts"
+          - name: "TOOLSET=gcc COMPILER=g++-8 CXXSTD=gnu++17 TES Job 21"
+            buildtype: "boost"
+            packages: "g++-8 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-8"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-8"
+            cxxstd: "gnu++17"
+            test_suite: "arithmetic_tests"
+          - name: "TOOLSET=gcc COMPILER=g++-8 CXXSTD=gnu++17 TES Job 22"
+            buildtype: "boost"
+            packages: "g++-8 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-8"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-8"
+            cxxstd: "gnu++17"
+            test_suite: "cpp_int_tests"
+          - name: "TOOLSET=gcc COMPILER=g++-8 CXXSTD=gnu++17 TES Job 23"
+            buildtype: "boost"
+            packages: "g++-8 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-8"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-8"
+            cxxstd: "gnu++17"
+            test_suite: "functions_and_limits"
+          - name: "TOOLSET=gcc COMPILER=g++-8 CXXSTD=gnu++17 TES Job 24"
+            buildtype: "boost"
+            packages: "g++-8 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-8"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            test_suite: "conversions performance"
+            toolset: "gcc"
+            compiler: "g++-8"
+            cxxstd: "gnu++17"
+          - name: "TOOLSET=gcc COMPILER=g++-8 CXXSTD=gnu++17 TES Job 25"
+            buildtype: "boost"
+            packages: "g++-8 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-8"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-8"
+            cxxstd: "gnu++17"
+            test_suite: "misc"
+          - name: "TOOLSET=gcc COMPILER=g++-8 CXXSTD=gnu++17 TES Job 26"
+            buildtype: "boost"
+            packages: "g++-8 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-8"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            test_suite: "compile_fail examples"
+            toolset: "gcc"
+            compiler: "g++-8"
+            cxxstd: "gnu++17"
+          - name: "TOOLSET=gcc COMPILER=g++-8 CXXSTD=gnu++17 TES Job 27"
+            buildtype: "boost"
+            packages: "g++-8 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-8"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-8"
+            cxxstd: "gnu++17"
+            test_suite: "concepts"
+          - name: "TOOLSET=gcc COMPILER=g++-9 CXXSTD=gnu++17 TES Job 28"
+            buildtype: "boost"
+            packages: "g++-9 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-9"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-9"
+            cxxstd: "gnu++17"
+            test_suite: "arithmetic_tests"
+          - name: "TOOLSET=gcc COMPILER=g++-9 CXXSTD=gnu++17 TES Job 29"
+            buildtype: "boost"
+            packages: "g++-9 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-9"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-9"
+            cxxstd: "gnu++17"
+            test_suite: "cpp_int_tests"
+          - name: "TOOLSET=gcc COMPILER=g++-9 CXXSTD=gnu++17 TES Job 30"
+            buildtype: "boost"
+            packages: "g++-9 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-9"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-9"
+            cxxstd: "gnu++17"
+            test_suite: "functions_and_limits"
+          - name: "TOOLSET=gcc COMPILER=g++-9 CXXSTD=gnu++17 TES Job 31"
+            buildtype: "boost"
+            packages: "g++-9 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-9"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            test_suite: "conversions performance"
+            toolset: "gcc"
+            compiler: "g++-9"
+            cxxstd: "gnu++17"
+          - name: "TOOLSET=gcc COMPILER=g++-9 CXXSTD=gnu++17 TES Job 32"
+            buildtype: "boost"
+            packages: "g++-9 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev libeigen3-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-9"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            test_suite: "misc include=/usr/include/eigen3"
+            toolset: "gcc"
+            compiler: "g++-9"
+            cxxstd: "gnu++17"
+          - name: "TOOLSET=gcc COMPILER=g++-9 CXXSTD=gnu++17 TES Job 33"
+            buildtype: "boost"
+            packages: "g++-9 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-9"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            test_suite: "compile_fail examples"
+            toolset: "gcc"
+            compiler: "g++-9"
+            cxxstd: "gnu++17"
+          - name: "TOOLSET=gcc COMPILER=g++-9 CXXSTD=gnu++17 TES Job 34"
+            buildtype: "boost"
+            packages: "g++-9 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "g++-9"
+            sources: ""
+            llvm_os: ""
+            llvm_ver: ""
+            toolset: "gcc"
+            compiler: "g++-9"
+            cxxstd: "gnu++17"
+            test_suite: "concepts"
+          - name: "TOOLSET=clang COMPILER=clang++-9 CXXSTD=c++17 Job 35"
+            buildtype: "boost"
+            packages: "clang-9 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "clang++-9"
+            sources: ""
+            llvm_os: "xenial"
+            llvm_ver: "9"
+            toolset: "clang"
+            compiler: "clang++-9"
+            cxxstd: "c++17"
+            test_suite: "arithmetic_tests"
+          - name: "TOOLSET=clang COMPILER=clang++-9 CXXSTD=c++17 Job 36"
+            buildtype: "boost"
+            packages: "clang-9 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "clang++-9"
+            sources: ""
+            llvm_os: "xenial"
+            llvm_ver: "9"
+            toolset: "clang"
+            compiler: "clang++-9"
+            cxxstd: "c++17"
+            test_suite: "cpp_int_tests"
+          - name: "TOOLSET=clang COMPILER=clang++-9 CXXSTD=c++17 Job 37"
+            buildtype: "boost"
+            packages: "clang++-9 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "clang++-9"
+            sources: ""
+            llvm_os: "xenial"
+            llvm_ver: "9"
+            toolset: "clang"
+            compiler: "clang++-9"
+            cxxstd: "c++17"
+            test_suite: "functions_and_limits"
+          - name: "TOOLSET=clang COMPILER=clang++-9 CXXSTD=c++17 Job 38"
+            buildtype: "boost"
+            packages: "clang-9 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "clang++-9"
+            sources: ""
+            llvm_os: "xenial"
+            llvm_ver: "9"
+            test_suite: "conversions performance"
+            toolset: "clang"
+            compiler: "clang++-9"
+            cxxstd: "c++17"
+          - name: "TOOLSET=clang COMPILER=clang++-9 CXXSTD=c++17 Job 39"
+            buildtype: "boost"
+            packages: "clang-9 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "clang++-9"
+            sources: ""
+            llvm_os: "xenial"
+            llvm_ver: "9"
+            toolset: "clang"
+            compiler: "clang++-9"
+            cxxstd: "c++17"
+            test_suite: "misc"
+          - name: "TOOLSET=clang COMPILER=clang++-9 CXXSTD=c++17 Job 40"
+            buildtype: "boost"
+            packages: "clang-9 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "clang++-9"
+            sources: ""
+            llvm_os: "xenial"
+            llvm_ver: "9"
+            test_suite: "compile_fail examples"
+            toolset: "clang"
+            compiler: "clang++-9"
+            cxxstd: "c++17"
+          - name: "TOOLSET=clang COMPILER=clang++-9 CXXSTD=c++17 Job 41"
+            buildtype: "boost"
+            packages: "clang-9 libgmp-dev libmpfr-dev libmpc-dev libmpfi-dev libtommath-dev"
+            packages_to_remove: ""
+            os: "ubuntu-20.04"
+            cxx: "clang++-9"
+            sources: ""
+            llvm_os: "xenial"
+            llvm_ver: "9"
+            toolset: "clang"
+            compiler: "clang++-9"
+            cxxstd: "c++17"
+            test_suite: "concepts"
+
+    runs-on: ${{ matrix.os }}
+    container: ${{ matrix.container }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Check if running in container
+        if: matrix.container != ''
+        run: echo "GHA_CONTAINER=${{ matrix.container }}" >> $GITHUB_ENV
+
+      - name: linux
+        shell: bash
+        env:
+          CXX: ${{ matrix.cxx }}
+          SOURCES: ${{ matrix.sources }}
+          LLVM_OS: ${{ matrix.llvm_os }}
+          LLVM_VER: ${{ matrix.llvm_ver }}
+          PACKAGES: ${{ matrix.packages }}
+          PACKAGES_TO_REMOVE: ${{ matrix.packages_to_remove }}
+          JOB_BUILDTYPE: ${{ matrix.buildtype }}
+          TOOLSET: ${{ matrix.toolset }}
+          COMPILER: ${{ matrix.compiler }}
+          CXXSTD: ${{ matrix.cxxstd }}
+          TEST_SUITE: ${{ matrix.test_suite }}
+          TRAVIS_BRANCH: ${{ github.base_ref }}
+          TRAVIS_OS_NAME: "linux"
+        run: |
+          echo '==================================> SETUP'
+          BOOST_CI_ORG=boostorg BOOST_CI_BRANCH=master && wget https://github.com/$BOOST_CI_ORG/boost-ci/archive/$BOOST_CI_BRANCH.tar.gz && tar -xvf $BOOST_CI_BRANCH.tar.gz && mkdir -p .github &&  mv boost-ci-$BOOST_CI_BRANCH .github/boost-ci
+          echo '==================================> PACKAGES'
+          set -ex
+          echo "Before package removal or install"
+          whoami
+          dpkg -l
+          echo "Checking /usr/local"
+          ls -al /usr/local
+          echo "Checking clang"
+          which clang++ || true
+          clang++ --version || true
+          ls -al /etc/alternatives
+          ls -al /usr/bin/c*
+          echo "about to run sudo apt-get purge -y $PACKAGES_TO_REMOVE"
+          if [ -n "$PACKAGES_TO_REMOVE" ]; then sudo apt-get purge -y $PACKAGES_TO_REMOVE; fi
+          echo "about to run the equivalent of linux-cxx-install.sh"
+
+          set -ex
+          echo ">>>>> APT: REPO.."
+          for i in {1..3}; do sudo -E apt-add-repository -y "ppa:ubuntu-toolchain-r/test" && break || sleep 2; done
+          
+          if test -n "${LLVM_OS}" ; then
+              wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+              if test -n "${LLVM_VER}" ; then
+                  sudo -E apt-add-repository "deb http://apt.llvm.org/${LLVM_OS}/ llvm-toolchain-${LLVM_OS}-${LLVM_VER} main"
+              else
+                  # Snapshot (i.e. trunk) build of clang
+                  sudo -E apt-add-repository "deb http://apt.llvm.org/${LLVM_OS}/ llvm-toolchain-${LLVM_OS} main"
+              fi
+          fi
+          echo ">>>>> APT: UPDATE.."
+          sudo -E apt-get -o Acquire::Retries=3 update
+          if test -n "${SOURCES}" ; then
+              echo ">>>>> APT: INSTALL SOURCES.."
+              for SOURCE in $SOURCES; do
+                  sudo -E apt-add-repository ppa:$SOURCE
+              done
+          fi
+          echo ">>>>> APT: INSTALL ${PACKAGES}.."
+          sudo -E DEBIAN_FRONTEND=noninteractive apt-get -o Acquire::Retries=3 -y --no-install-suggests --no-install-recommends install ${PACKAGES}
+
+          echo "done with linux-cxx-install.sh"
+          echo "After package removal and install"
+          dpkg -l
+          echo "Checking /usr/local"
+          ls -al /usr/local
+          echo "Checking clang"
+          which clang++ || true
+          clang++ --version || true
+          ls -al /etc/alternatives
+          ls -al /usr/bin/c*
+          echo '==================================> INSTALL AND COMPILE'
+          set -e
+          set -x
+          export TRAVIS_BUILD_DIR=$(pwd)
+          export TRAVIS_BRANCH=${TRAVIS_BRANCH:-$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')}
+          export VCS_COMMIT_ID=$GITHUB_SHA
+          export GIT_COMMIT=$GITHUB_SHA
+          export REPO_NAME=$(basename $GITHUB_REPOSITORY)
+          export USER=$(whoami)
+          export CC=${CC:-gcc}
+          export PATH=~/.local/bin:/usr/local/bin:$PATH
+
+          if [ "$JOB_BUILDTYPE" == "boost" ]; then
+
+          echo '==================================> INSTALL'
+
+          cd ..
+          git clone -b $TRAVIS_BRANCH --depth 1 https://github.com/boostorg/boost.git boost-root
+          cd boost-root
+          git submodule update --init tools/build
+          git submodule update --init libs/config
+          git submodule update --init libs/polygon
+          git submodule update --init tools/boost_install
+          git submodule update --init libs/headers
+          git submodule update --init tools/boostdep
+          cp -r $TRAVIS_BUILD_DIR/* libs/multiprecision
+          python tools/boostdep/depinst/depinst.py multiprecision
+          ./bootstrap.sh
+          ./b2 headers
+
+          echo '==================================> SCRIPT'
+
+          echo "using $TOOLSET : : $COMPILER : <cxxflags>-std=$CXXSTD ;" > ~/user-config.jam
+          (cd libs/config/test && ../../../b2 config_info_travis_install toolset=$TOOLSET && ./config_info_travis)
+          (cd libs/multiprecision/test && ../../../b2 -j3 toolset=$TOOLSET $TEST_SUITE define=CI_SUPPRESS_KNOWN_ISSUES define=SLOW_COMPILER)
+
+          fi
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# 
+#   osx:
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         include:
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 42"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "9.3"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#             test_suite: "arithmetic_tests"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 43"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "9.3"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#             test_suite: "cpp_int_tests"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 44"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "9.3"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#             test_suite: "functions_and_limits"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 45"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "9.3"
+#             test_suite: "conversions performance"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 46"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "9.3"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#             test_suite: "misc"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 47"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "9.3"
+#             test_suite: "compile_fail examples"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 48"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "9.3"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#             test_suite: "concepts"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 49"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "8.3"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#             test_suite: "arithmetic_tests"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 50"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "8.3"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#             test_suite: "cpp_int_tests"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 51"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "8.3"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#             test_suite: "functions_and_limits"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 52"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "8.3"
+#             test_suite: "conversions performance"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 53"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "8.3"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#             test_suite: "misc"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 54"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "8.3"
+#             test_suite: "compile_fail examples"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 55"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "8.3"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#             test_suite: "concepts"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 56"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "7.3"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#             test_suite: "arithmetic_tests"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 57"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "7.3"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#             test_suite: "cpp_int_tests"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 58"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "7.3"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#             test_suite: "functions_and_limits"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 59"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "7.3"
+#             test_suite: "conversions performance"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 60"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "7.3"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#             test_suite: "misc"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 61"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "7.3"
+#             test_suite: "compile_fail examples"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# Change (or delete) the Xcode version for this job.
+# 
+#           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 62"
+#             buildtype: "boost"
+#             packages: ""
+#             os: "macos-10.15"
+#             cxx: "clang++"
+#             sources: ""
+#             llvm_os: ""
+#             llvm_ver: ""
+#             xcode_version: "7.3"
+#             toolset: "clang"
+#             compiler: "clang++"
+#             cxxstd: "c++14"
+#             test_suite: "concepts"
+#
+# Github Actions only supports Xcode versions 10.3 and above
+# 
+# 
+#     runs-on: ${{ matrix.os }}
+# 
+#     steps:
+#       - uses: actions/checkout@v2
+# 
+#       - name: Set DEVELOPER_DIR
+#         if: matrix.xcode_version != ''
+#         run: echo "DEVELOPER_DIR=/Applications/Xcode_${{ matrix.xcode_version }}.app/Contents/Developer" >> $GITHUB_ENV
+#       - name: Test DEVELOPER_DIR
+#         run: echo $DEVELOPER_DIR
+# 
+#       - name: "osx"
+#         shell: bash
+#         env:
+#           CXX: ${{ matrix.cxx }}
+#           SOURCES: ${{ matrix.sources }}
+#           LLVM_OS: ${{ matrix.llvm_os }}
+#           LLVM_VER: ${{ matrix.llvm_ver }}
+#           PACKAGES: ${{ matrix.packages }}
+#           JOB_BUILDTYPE: ${{ matrix.buildtype }}
+#           TOOLSET: ${{ matrix.toolset }}
+#           COMPILER: ${{ matrix.compiler }}
+#           CXXSTD: ${{ matrix.cxxstd }}
+#           TEST_SUITE: ${{ matrix.test_suite }}
+#           TRAVIS_BRANCH: ${{ github.base_ref }}
+#           TRAVIS_OS_NAME: "osx"
+#         run: |
+#           echo '==================================> SETUP'
+#           set -ex
+#           uname -a
+#           whoami
+#           sudo mv /Library/Developer/CommandLineTools /Library/Developer/CommandLineTools.bck
+#           BOOST_CI_ORG=boostorg BOOST_CI_BRANCH=master && /usr/local/bin/wget https://github.com/$BOOST_CI_ORG/boost-ci/archive/$BOOST_CI_BRANCH.tar.gz && tar -xvf $BOOST_CI_BRANCH.tar.gz && mkdir -p .github &&  mv boost-ci-$BOOST_CI_BRANCH .github/boost-ci
+#           echo '==================================> PACKAGES'
+#           echo "the equivalent of osx-cxx-install.sh would run here."
+# 
+#           echo '==================================> INSTALL AND COMPILE'
+#           set -e
+#           set -x
+#           export TRAVIS_BUILD_DIR=$(pwd)
+#           export TRAVIS_BRANCH=${TRAVIS_BRANCH:-$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')}
+#           export VCS_COMMIT_ID=$GITHUB_SHA
+#           export GIT_COMMIT=$GITHUB_SHA
+#           export REPO_NAME=$(basename $GITHUB_REPOSITORY)
+#           export USER=$(whoami)
+#           export CC=${CC:-gcc}
+#           export PATH=~/.local/bin:/usr/local/bin:$PATH
+# 
+#           if [ "$JOB_BUILDTYPE" == "boost" ]; then
+# 
+#           echo '==================================> INSTALL'
+# 
+#           cd ..
+#           git clone -b $TRAVIS_BRANCH --depth 1 https://github.com/boostorg/boost.git boost-root
+#           cd boost-root
+#           git submodule update --init tools/build
+#           git submodule update --init libs/config
+#           git submodule update --init libs/polygon
+#           git submodule update --init tools/boost_install
+#           git submodule update --init libs/headers
+#           git submodule update --init tools/boostdep
+#           cp -r $TRAVIS_BUILD_DIR/* libs/multiprecision
+#           python tools/boostdep/depinst/depinst.py multiprecision
+#           ./bootstrap.sh
+#           ./b2 headers
+# 
+#           echo '==================================> SCRIPT'
+# 
+#           echo "using $TOOLSET : : $COMPILER : <cxxflags>-std=$CXXSTD ;" > ~/user-config.jam
+#           (cd libs/config/test && ../../../b2 config_info_travis_install toolset=$TOOLSET && ./config_info_travis)
+#           (cd libs/multiprecision/test && ../../../b2 -j3 toolset=$TOOLSET $TEST_SUITE define=CI_SUPPRESS_KNOWN_ISSUES define=SLOW_COMPILER)
+# 
+#           fi
