@@ -8,7 +8,8 @@ sudo: false
 
 python: "2.7"
 
-dist : focal
+#dist: focal
+dist: bionic
 
 os:
   - linux
