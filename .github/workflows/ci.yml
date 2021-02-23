@@ -593,7 +593,7 @@ jobs:
           TRAVIS_OS_NAME: "linux"
         run: |
           echo '==================================> SETUP'
-          BOOST_CI_ORG=boostorg BOOST_CI_BRANCH=master && wget https://github.com/$BOOST_CI_ORG/boost-ci/archive/$BOOST_CI_BRANCH.tar.gz && tar -xvf $BOOST_CI_BRANCH.tar.gz && mkdir -p .github &&  mv boost-ci-$BOOST_CI_BRANCH .github/boost-ci
+          # BOOST_CI_ORG=boostorg BOOST_CI_BRANCH=master && wget https://github.com/$BOOST_CI_ORG/boost-ci/archive/$BOOST_CI_BRANCH.tar.gz && tar -xvf $BOOST_CI_BRANCH.tar.gz && mkdir -p .github &&  mv boost-ci-$BOOST_CI_BRANCH .github/boost-ci
           echo '==================================> PACKAGES'
           set -ex
           echo "Before package removal or install"
@@ -608,6 +608,7 @@ jobs:
           ls -al /usr/bin/c*
           echo "about to run sudo apt-get purge -y $PACKAGES_TO_REMOVE"
           if [ -n "$PACKAGES_TO_REMOVE" ]; then sudo apt-get purge -y $PACKAGES_TO_REMOVE; fi
+          sudo ln -s /usr/bin/llvm-cov-9 /usr/bin/llvm-cov
           echo "about to run the equivalent of linux-cxx-install.sh"
 
           set -ex
@@ -680,17 +681,14 @@ jobs:
           (cd libs/config/test && ../../../b2 config_info_travis_install toolset=$TOOLSET && ./config_info_travis)
           (cd libs/multiprecision/test && ../../../b2 -j3 toolset=$TOOLSET $TEST_SUITE define=CI_SUPPRESS_KNOWN_ISSUES define=SLOW_COMPILER)
 
-          fi
-#
-# Github Actions only supports Xcode versions 10.3 and above
-# 
+          fi# 
 #   osx:
 #     strategy:
 #       fail-fast: false
 #       matrix:
 #         include:
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 42"
@@ -707,7 +705,7 @@ jobs:
 #             cxxstd: "c++14"
 #             test_suite: "arithmetic_tests"
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 43"
@@ -724,7 +722,7 @@ jobs:
 #             cxxstd: "c++14"
 #             test_suite: "cpp_int_tests"
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 44"
@@ -741,7 +739,7 @@ jobs:
 #             cxxstd: "c++14"
 #             test_suite: "functions_and_limits"
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 45"
@@ -758,7 +756,7 @@ jobs:
 #             compiler: "clang++"
 #             cxxstd: "c++14"
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 46"
@@ -775,7 +773,7 @@ jobs:
 #             cxxstd: "c++14"
 #             test_suite: "misc"
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 47"
@@ -792,7 +790,7 @@ jobs:
 #             compiler: "clang++"
 #             cxxstd: "c++14"
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 48"
@@ -809,7 +807,7 @@ jobs:
 #             cxxstd: "c++14"
 #             test_suite: "concepts"
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 49"
@@ -826,7 +824,7 @@ jobs:
 #             cxxstd: "c++14"
 #             test_suite: "arithmetic_tests"
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 50"
@@ -843,7 +841,7 @@ jobs:
 #             cxxstd: "c++14"
 #             test_suite: "cpp_int_tests"
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 51"
@@ -860,7 +858,7 @@ jobs:
 #             cxxstd: "c++14"
 #             test_suite: "functions_and_limits"
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 52"
@@ -877,7 +875,7 @@ jobs:
 #             compiler: "clang++"
 #             cxxstd: "c++14"
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 53"
@@ -894,7 +892,7 @@ jobs:
 #             cxxstd: "c++14"
 #             test_suite: "misc"
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 54"
@@ -911,7 +909,7 @@ jobs:
 #             compiler: "clang++"
 #             cxxstd: "c++14"
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 55"
@@ -928,7 +926,7 @@ jobs:
 #             cxxstd: "c++14"
 #             test_suite: "concepts"
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 56"
@@ -945,7 +943,7 @@ jobs:
 #             cxxstd: "c++14"
 #             test_suite: "arithmetic_tests"
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 57"
@@ -962,7 +960,7 @@ jobs:
 #             cxxstd: "c++14"
 #             test_suite: "cpp_int_tests"
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 58"
@@ -979,7 +977,7 @@ jobs:
 #             cxxstd: "c++14"
 #             test_suite: "functions_and_limits"
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 59"
@@ -996,7 +994,7 @@ jobs:
 #             compiler: "clang++"
 #             cxxstd: "c++14"
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 60"
@@ -1013,7 +1011,7 @@ jobs:
 #             cxxstd: "c++14"
 #             test_suite: "misc"
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 61"
@@ -1030,7 +1028,7 @@ jobs:
 #             compiler: "clang++"
 #             cxxstd: "c++14"
 #
-# Github Actions only supports Xcode versions 10.3 and above
+# Github Actions only supports certain Xcode versions
 # Change (or delete) the Xcode version for this job.
 # 
 #           - name: "TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 T Job 62"
@@ -1046,8 +1044,6 @@ jobs:
 #             compiler: "clang++"
 #             cxxstd: "c++14"
 #             test_suite: "concepts"
-#
-# Github Actions only supports Xcode versions 10.3 and above
 # 
 # 
 #     runs-on: ${{ matrix.os }}
@@ -1082,7 +1078,7 @@ jobs:
 #           uname -a
 #           whoami
 #           sudo mv /Library/Developer/CommandLineTools /Library/Developer/CommandLineTools.bck
-#           BOOST_CI_ORG=boostorg BOOST_CI_BRANCH=master && /usr/local/bin/wget https://github.com/$BOOST_CI_ORG/boost-ci/archive/$BOOST_CI_BRANCH.tar.gz && tar -xvf $BOOST_CI_BRANCH.tar.gz && mkdir -p .github &&  mv boost-ci-$BOOST_CI_BRANCH .github/boost-ci
+#           # BOOST_CI_ORG=boostorg BOOST_CI_BRANCH=master && /usr/local/bin/wget https://github.com/$BOOST_CI_ORG/boost-ci/archive/$BOOST_CI_BRANCH.tar.gz && tar -xvf $BOOST_CI_BRANCH.tar.gz && mkdir -p .github &&  mv boost-ci-$BOOST_CI_BRANCH .github/boost-ci
 #           echo '==================================> PACKAGES'
 #           echo "the equivalent of osx-cxx-install.sh would run here."
 # 
